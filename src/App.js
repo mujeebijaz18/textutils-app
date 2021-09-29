@@ -16,7 +16,7 @@ function App() {
   const [mode, setMode] = useState('light');
   const [color, setColor] = useState('light');
 
-  // const [modeText, setModeText] = useState('Enable Dark Mode');
+  const [modeText, setModeText] = useState('Dark Mode');
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -29,45 +29,20 @@ function App() {
     }, 2000);
   }
 
-  const toggleBlue = () => {
-    if (mode === 'light') {
-      setMode('primary');
-      setColor('dark');
-      document.body.style.backgroundColor = '#042743';
-      showAlert('Blue mode is Enabled', 'success');
-    } else {
-      setMode('light');
-      setColor('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert('Light mode is Enabled', 'success');
-    }
-  }
 
-  const toggleGreen = () => {
-    if (mode === 'light') {
-      setMode('success');
-      setColor('dark');
-      document.body.style.backgroundColor = '#4db350';
-      showAlert('Green mode is Enabled', 'success');
-    } else {
-      setMode('light');
-      setColor('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert('Light mode is Enabled', 'success');
-    }
-  }
-
-  const toggleDark = () => {
+  const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
       setColor('dark');
       document.body.style.backgroundColor = '#444';
       showAlert('Dark mode is Enabled', 'success');
+      setModeText('Light Mode');
     } else {
       setMode('light');
       setColor('light');
       document.body.style.backgroundColor = 'white';
       showAlert('Light mode is Enabled', 'success');
+      setModeText('Dark Mode');
     }
   }
 
@@ -75,7 +50,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar title="Text Utils" mode={mode} color={color} toggleBlue={toggleBlue} toggleGreen={toggleGreen} toggleDark={toggleDark} />
+        <Navbar title="Text Utils" mode={mode} color={color} toggleMode={toggleMode} modeText={modeText} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Switch>
